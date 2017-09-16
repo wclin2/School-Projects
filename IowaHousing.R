@@ -67,6 +67,7 @@ for(j in skewed_feats) {
   tcdata[, j] = log(cdata[, j] + 1)
 }
 
+
 #Data cleaned
 dim(tcdata)
 names(tcdata)
@@ -77,6 +78,20 @@ train= cbind(train,price)
 head(train)
 dim(train)
 testx <- read.csv("test.csv")
+
+#Multivariate Model Approach to remove outliers bt cooksd
+mod <- lm(price ~ ., data= train[,c(numeric_var, "price")])
+cooksd <- cooks.distance(mod)
+#In general use, those observations that have a cook¡¦s distance greater than 4 times the mean may be classified as influential. This is not a hard boundary.
+plot(cooksd, pch="*", cex=2, main="Influential Obs by Cooks distance")  # plot cook's distance
+abline(h = 4*mean(cooksd, na.rm=T), col="red")  # add cutoff line
+text(x=1:length(cooksd)+1, y=cooksd, labels=ifelse(cooksd>4*mean(cooksd, na.rm=T),names(cooksd),""), col="red")  # add labels
+
+influential <- as.numeric(names(cooksd)[(cooksd > 4*mean(cooksd, na.rm=T))])  # influential row numbers
+length(influential)
+dim(train)
+train = train[-influential, ]
+
 
 #Run time:
 #   user   system   elapsed 
