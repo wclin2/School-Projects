@@ -19,8 +19,6 @@ library("e1071")
 # library('Metrics')
 
 
-
-
 #Data Cleaning Part
 
 #Loading Data
@@ -93,12 +91,7 @@ dim(train)
 train = train[-influential, ]
 
 
-#Run time:
-#   user   system   elapsed 
-#  671.16   21.13    709.30
-
 #Model Part
-
 #StepAIC(simple linear model)
 
 full.model = lm( price ~ ., data = train[,c(numeric_var, "price")])
@@ -113,17 +106,9 @@ write.table(matrix(data=c(testx$Id,yHat),ncol=2),file="mysubmission1.txt",
 
 #Self evaluation times: 500 times
 
-#Self-evaluation quantile: 
-#       0%       25%       50%       75%      100% 
-#0.1069510 0.1305383 0.1399910 0.1524692 0.1931223 
-
 #Self-evaluation standard error of rmse: 0.01492717 / 500 times
 
 #Kaggle evaluation: 0.13687
-
-#Run time:
-#   user   system   elapsed 
-#   1.53    0.18     1.81
 
 
 #Random Forest method
@@ -137,18 +122,10 @@ write.table(matrix(data=c(testx$Id,yHat),ncol=2),file="mysubmission2.txt",
 
 #Self evaluation times: 500 times
 
-#Self-evaluation quantile: 
-
-#     0%        25%        50%        75%       100% 
-#0.1020275   0.1142701   0.1196771   0.1239120   0.1391330 
-
 #Self-evaluation standard error of rmse: 0.00676
 
 #Kaggle evaluation: 0.14300
 
-#Run time:
-#   user   system   elapsed 
-#   0.00    0.01     0.01
 
 
 #SVM method
@@ -168,19 +145,9 @@ write.table(matrix(data=c(testx$Id,yHat),ncol=2),file="mysubmission3.txt",
 
 #Self evaluation times: 500 times
 
-#Self-evaluation quantile: 
-
-#0%         25%        50%        75%       100% 
-#0.08980102 0.11620165 0.12502560 0.13400159 0.16680586
-
 #Self-evaluation standard error of rmse: 0.01256764/ 500 times
 
 #Kaggle evaluation: 0.12081 
 
-#Run time:
-#user   system   elapsed 
-#0.02    0.02     0.05
-
-#Note: The run time did not include the code finding the cost parameter.
 
 
