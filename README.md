@@ -2,6 +2,6 @@
 
 1. Housing Price Predicting Model(R)
 2. Loan Default Predicting Model(Python)
-3. Sentiment Prediction for Movie reviews(R)
-4. Movie Recommender system(Python/Pyspark)
-5. Taxi trip duration predicting model(Pyspark)
+3. Sentiment Prediction for Movie Reviews(R)
+4. Movie Recommender System(Python/Pyspark)
+5. NYC Taxi trip_duration Feature Exploration  
