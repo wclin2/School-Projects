@@ -1,4 +1,4 @@
-# Intern_Projects
+# Projects
 
 1. Housing Price Predicting Model(R)
 2. Loan Default Predicting Model(Python)
